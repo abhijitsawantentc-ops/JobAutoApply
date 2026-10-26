@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JobAutoApply Pro | Autonomous Application Engine</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230A66C2'><path d='M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z'/></svg>">
+</head>
+<body>
+
+  <!-- Sticky Top Navigation -->
+  <header>
+    <div class="brand">
+      <div class="brand-icon">
+        <svg viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>
+      </div>
+      <div>
+        <div class="brand-title">JobAutoApply Pro</div>
+        <div class="brand-tagline">Autonomous Instahyre &amp; LinkedIn Easy Apply</div>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <div id="statusBadge" class="status-badge">
+        <span class="status-dot"></span>
+        <span id="statusText">Ready</span>
+      </div>
+      <button id="quickLaunchBtn" class="btn btn-primary" onclick="openDirectJobTab()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+        Launch Active Site
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <div class="app-container">
+
+    <!-- Left Sidebar -->
+    <aside class="sidebar">
+      <div class="nav-card">
+        <button class="nav-item active" data-tab="dashboard">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+          Dashboard &amp; Bot
+        </button>
+        <button class="nav-item" data-tab="launchers">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          1-Click Bookmarklet
+        </button>
+        <button class="nav-item" data-tab="profile">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+          Candidate Profile
+        </button>
+        <button class="nav-item" data-tab="history">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/></svg>
+          Application History
+        </button>
+        <button class="nav-item" data-tab="settings">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+          Safety &amp; Pacing
+        </button>
+
+        <div style="margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--border-subtle);">
+          <div style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px;">Target Platform</div>
+          <div class="platform-selector">
+            <button class="platform-btn active instahyre" id="selectInstahyre" onclick="setPlatform('instahyre')">Instahyre</button>
+            <button class="platform-btn linkedin" id="selectLinkedin" onclick="setPlatform('linkedin')">LinkedIn</button>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Panes -->
+    <main class="main-view">
+
+      <!-- TAB 1: DASHBOARD -->
+      <section id="tab-dashboard" class="tab-pane active">
+        
+        <!-- Stat Cards -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">Applied Today</div>
+            <div class="stat-val" id="appliedCountVal" style="color: var(--emerald-success);">0</div>
+            <div class="stat-sub">Submitted automatically</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Skipped / Filtered</div>
+            <div class="stat-val" id="skippedCountVal" style="color: var(--amber-warning);">0</div>
+            <div class="stat-sub">External or low match</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Session Limit</div>
+            <div class="stat-val" id="sessionLimitVal">30</div>
+            <div class="stat-sub">Anti-rate limit cap</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Active Jitter Delay</div>
+            <div class="stat-val" id="delayRangeVal" style="font-size: 1.5rem; margin-top: 6px;">2.5 - 4.5s</div>
+            <div class="stat-sub">Human-like randomization</div>
+          </div>
+        </div>
+
+        <!-- Control Action Bar -->
+        <div class="control-card">
+          <div class="control-info">
+            <h3 id="currentActionTitle">Ready to Automate</h3>
+            <p id="currentActionSubtitle">Selected: <strong id="activePlatformName" style="color: var(--instahyre-teal);">Instahyre</strong>. Configure answers, open the job page, and trigger the bot.</p>
+          </div>
+          <div class="control-buttons">
+            <button id="startBotBtn" class="btn btn-primary" onclick="toggleBotExecution()">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              <span>Start Bot</span>
+            </button>
+            <button id="stepNextBtn" class="btn btn-secondary" onclick="simulateStep()">Step Next</button>
+            <button id="stopBotBtn" class="btn btn-danger" onclick="stopBotExecution()">Stop</button>
+          </div>
+        </div>
+
+        <!-- Live Event Stream Terminal -->
+        <div class="logs-card">
+          <div class="logs-header">
+            <div class="logs-title">Autonomous Execution Terminal</div>
+            <div>
+              <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.75rem;" onclick="clearLogs()">Clear</button>
+            </div>
+          </div>
+          <div id="logTerminal" class="log-terminal">
+            <div class="log-row">
+              <span class="log-time">[System]</span>
+              <span class="log-badge info">INFO</span>
+              <span class="log-msg">JobAutoApply Desktop ready. Choose your platform and launch.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: 1-CLICK BOOKMARKLET & INJECTOR -->
+      <section id="tab-launchers" class="tab-pane">
+        <div class="launcher-box">
+          <div class="launcher-header">
+            <div>
+              <h2 style="font-size: 1.35rem; font-weight: 800; margin-bottom: 4px;">Run Directly in Chrome or Edge on Windows</h2>
+              <p style="font-size: 0.85rem; color: var(--text-secondary);">Because you are logged into LinkedIn &amp; Instahyre in your normal desktop browser, this 1-click launcher executes the full automation engine on your active tab with zero setup.</p>
+            </div>
+          </div>
+
+          <div class="launcher-steps">
+            <div class="step-card">
+              <div class="step-num">1</div>
+              <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 6px;">Open Jobs Search</h4>
+              <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 12px;">Open your preferred job site in a new browser tab:</p>
+              <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.8rem;" onclick="window.open('https://www.instahyre.com/candidate/opportunities/', '_blank')">Open Instahyre</button>
+                <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.8rem;" onclick="window.open('https://www.linkedin.com/jobs/', '_blank')">Open LinkedIn Jobs</button>
+              </div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-num">2</div>
+              <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 6px;">Drag to Bookmarks</h4>
+              <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 12px;">Drag this button to your browser Bookmarks Bar (or click to copy script):</p>
+              <a id="bookmarkletLink" class="bookmarklet-btn" href="#" onclick="copyBookmarkletScript(event)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <span>⚡ AutoApply Bot</span>
+              </a>
+            </div>
+
+            <div class="step-card">
+              <div class="step-num">3</div>
+              <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 6px;">Click to Automate</h4>
+              <p style="font-size: 0.8rem; color: var(--text-secondary);">Navigate to any jobs page on LinkedIn or Instahyre and click your bookmark. A floating HUD appears on the page and autonomously fills and submits applications!</p>
+            </div>
+          </div>
+
+          <div style="margin-top: 16px; background: rgba(0,0,0,0.3); border-radius: var(--radius-md); padding: 14px; border: 1px solid var(--border-subtle);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted);">Injected Code Preview</span>
+              <button class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.75rem;" onclick="copyFullScript()">Copy Script to Clipboard</button>
+            </div>
+            <textarea id="scriptPreviewText" readonly class="form-input" style="width: 100%; height: 120px; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; resize: none;"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: CANDIDATE PROFILE -->
+      <section id="tab-profile" class="tab-pane">
+        <div class="stat-card" style="padding: 28px;">
+          <h2 style="font-size: 1.35rem; font-weight: 800; margin-bottom: 4px;">Candidate Profile Answers</h2>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 24px;">Pre-fill standard answers used by the bot to automatically answer LinkedIn Easy Apply screening questions.</p>
+
+          <form id="profileForm" onsubmit="saveProfile(event)">
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label">Full Name</label>
+                <input type="text" id="profFullName" class="form-input" value="Candidate Name" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Phone Number (Required for Easy Apply)</label>
+                <input type="tel" id="profPhone" class="form-input" value="+919876543210" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Total Experience (Years)</label>
+                <input type="number" step="0.5" id="profExp" class="form-input" value="3.5" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Notice Period (Days)</label>
+                <input type="number" id="profNotice" class="form-input" value="30" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Current CTC (in LPA)</label>
+                <input type="number" step="0.5" id="profCurrentCtc" class="form-input" value="12" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Expected CTC (in LPA)</label>
+                <input type="number" step="0.5" id="profExpectedCtc" class="form-input" value="18" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Work Authorization Question</label>
+                <select id="profAuthorized" class="form-input">
+                  <option value="true" selected>Auto-select "Yes" (Legally authorized to work)</option>
+                  <option value="false">Auto-select "No"</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Visa Sponsorship Question</label>
+                <select id="profSponsorship" class="form-input">
+                  <option value="false" selected>Auto-select "No" (Will not require sponsorship)</option>
+                  <option value="true">Auto-select "Yes"</option>
+                </select>
+              </div>
+              <div class="form-group full">
+                <label class="form-label">Preferred Locations</label>
+                <input type="text" id="profLocations" class="form-input" value="Bangalore, Remote, Pune, Hyderabad">
+              </div>
+            </div>
+
+            <div style="margin-top: 24px; display: flex; gap: 12px; align-items: center;">
+              <button type="submit" class="btn btn-primary">Save Candidate Profile</button>
+              <span id="profileSavedAlert" style="font-size: 0.85rem; color: var(--emerald-success); display: none;">✓ Profile answers saved!</span>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- TAB 4: APPLICATION HISTORY -->
+      <section id="tab-history" class="tab-pane">
+        <div class="table-card">
+          <div style="padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-subtle);">
+            <div>
+              <h2 style="font-size: 1.25rem; font-weight: 800;">Application History</h2>
+              <p style="font-size: 0.8rem; color: var(--text-secondary);">Jobs automatically submitted or filtered during sessions.</p>
+            </div>
+            <div style="display: flex; gap: 10px;">
+              <button class="btn btn-secondary" style="padding: 6px 14px; font-size: 0.8rem;" onclick="exportHistoryCsv()">Export CSV</button>
+              <button class="btn btn-danger" style="padding: 6px 14px; font-size: 0.8rem;" onclick="clearHistory()">Clear</button>
+            </div>
+          </div>
+          <table class="job-table">
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Role / Title</th>
+                <th>Company</th>
+                <th>Platform</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="historyTableBody">
+              <tr>
+                <td colspan="5" style="text-align: center; padding: 36px; color: var(--text-muted);">No applications logged yet. Run the bot to view submitted jobs here.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- TAB 5: SAFETY & PACING -->
+      <section id="tab-settings" class="tab-pane">
+        <div class="stat-card" style="padding: 28px;">
+          <h2 style="font-size: 1.35rem; font-weight: 800; margin-bottom: 4px;">Anti-Bot Pacing &amp; Rules</h2>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 24px;">Configure randomized delays and safety barriers to protect your account.</p>
+
+          <form id="settingsForm" onsubmit="saveSettings(event)">
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label">Minimum Delay: <strong id="minDelayLabel">2.5s</strong></label>
+                <input type="range" id="minDelayRange" min="1" max="6" step="0.5" value="2.5" class="form-input" oninput="updateDelayLabels()">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Maximum Delay: <strong id="maxDelayLabel">4.5s</strong></label>
+                <input type="range" id="maxDelayRange" min="2" max="10" step="0.5" value="4.5" class="form-input" oninput="updateDelayLabels()">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Max Applications Per Run</label>
+                <input type="number" id="maxAppsInput" class="form-input" value="30" min="5" max="100">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Skip Low InstaMatch Score</label>
+                <select id="skipLowMatchSelect" class="form-input">
+                  <option value="true" selected>Yes (Skip poor matches)</option>
+                  <option value="false">No (Apply regardless)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Auto Bulk-Apply to Similar Jobs</label>
+                <select id="autoBulkSelect" class="form-input">
+                  <option value="true" selected>Yes (Select matching popup suggestions)</option>
+                  <option value="false">No (Single job only)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Skip External ATS Redirects</label>
+                <select id="skipExternalSelect" class="form-input">
+                  <option value="true" selected>Yes (Keep only 1-click easy apply)</option>
+                  <option value="false">No</option>
+                </select>
+              </div>
+            </div>
+
+            <div style="margin-top: 24px; display: flex; gap: 12px; align-items: center;">
+              <button type="submit" class="btn btn-primary">Save Safety Settings</button>
+              <span id="settingsSavedAlert" style="font-size: 0.85rem; color: var(--emerald-success); display: none;">✓ Settings saved!</span>
+            </div>
+          </form>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
